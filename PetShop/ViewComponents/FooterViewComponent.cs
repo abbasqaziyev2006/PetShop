@@ -15,7 +15,7 @@ namespace PetShop.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var socials = _dbContext.Socials.ToList();
-            var bio = _dbContext.Bios.FirstOrDefault();
+            var bio = _dbContext.WebsiteInfo.FirstOrDefault();
             var model = new FooterViewModel
             {
                 Socials = socials,
