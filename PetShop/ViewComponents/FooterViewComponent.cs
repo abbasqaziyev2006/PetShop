@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.DataContext;
+using PetShop.DataContext.Entities;
 using PetShop.Models;
 
 namespace PetShop.ViewComponents
@@ -15,11 +16,11 @@ namespace PetShop.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var socials = _dbContext.Socials.ToList();
-            var bio = _dbContext.WebsiteInfo.FirstOrDefault();
+            var websiteInfos = _dbContext.WebsiteInfo.FirstOrDefault();
             var model = new FooterViewModel
             {
                 Socials = socials,
-                Bio = bio
+                WebsiteInfos = websiteInfos
 
             };
             return View(model);
