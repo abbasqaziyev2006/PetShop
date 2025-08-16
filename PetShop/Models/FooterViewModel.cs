@@ -6,6 +6,6 @@ namespace PetShop.Models
     {
         public string? LogoUrl { get; set; }
         public List<Social> Socials { get; set; } = [];
-        public WebsiteInfo? WebsiteInfos { get; set; }
+        public Bio? Bios { get; internal set; }
     }
 }

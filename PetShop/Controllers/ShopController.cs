@@ -25,9 +25,7 @@ namespace PetShop.Controllers
 
             var shopViewModel = new ShopViewModel
             {
-                Products = products,
-                Categories = categories,
-                Tags = tags
+                Products = products
             };
 
             return View(shopViewModel);

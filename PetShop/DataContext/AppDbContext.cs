@@ -9,16 +9,14 @@ namespace PetShop.DataContext
         {
         }
 
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Logo> Logos { get; set; }
-        public DbSet<ContactInfo> ContactInfos { get; set; }
-        public DbSet<ProductTag> ProductTags { get; set; }
-        public DbSet<Slider> Sliders { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<WebsiteInfo> WebsiteInfo { get; set; }
+        public DbSet<Bio> Bios { get; set; }
         public DbSet<Social> Socials { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductTag> ProductTags { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
     }
 }

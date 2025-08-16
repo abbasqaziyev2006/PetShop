@@ -1,26 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.DataContext;
-using PetShop.DataContext.Entities;
 using PetShop.Models;
 
 namespace PetShop.ViewComponents
 {
-    public class FooterViewComponent : ViewComponent
+    public class ShopViewComponent : ViewComponent
     {
         private readonly AppDbContext _dbContext;
 
-        public FooterViewComponent(AppDbContext dbContext)
+        public ShopViewComponent(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var socials = _dbContext.Socials.ToList();
-            var bios = _dbContext.Bios.FirstOrDefault();
-            var model = new FooterViewModel
+            var products = _dbContext.Products.ToList();
+
+            var model = new ShopViewModel
             {
-                Socials = socials,
-                Bios = bios,
+                Products = products
+
             };
             return View(model);
         }

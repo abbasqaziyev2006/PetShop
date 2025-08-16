@@ -1,4 +1,8 @@
-﻿@model FooterViewModel
+﻿﻿@{
+    FooterViewModel model = Model;
+    var socials = model.Socials;
+    var bios = model.Bios;
+}
 
 <footer id="footer" class="my-5">
     <div class="container py-5 my-5">
@@ -6,18 +10,20 @@
 
             <div class="col-md-3">
                 <div class="footer-menu">
-                    <img src="~/images/@Model.LogoUrl" alt="logo">
+                    <img src="images/logo.png" alt="logo">
                     <p class="blog-paragraph fs-6 mt-3">Subscribe to our newsletter to get updates about our grand offers.</p>
                     <div class="social-links">
                         <ul class="d-flex list-unstyled gap-2">
-                            @foreach (var link in Model.Socials)
+
+                            @foreach (var item in socials)
                             {
                                 <li class="social">
-                                    <a href="@link.Url" target="_blank" title="@link.Platform">
-                                        <iconify-icon class="social-icon" icon="ri:@link.Icon"></iconify-icon>
+                                    <a href="@item.Url">
+                                        <iconify-icon class="social-icon" icon="@item.Icon"></iconify-icon>
                                     </a>
                                 </li>
                             }
+
                         </ul>
                     </div>
                 </div>
@@ -74,8 +80,7 @@
                     <div class="search-bar border rounded-pill border-dark-subtle px-2">
                         <form class="text-center d-flex align-items-center" action="#" method="">
                             <input type="text" class="form-control border-0 bg-transparent" placeholder="Enter your email here" />
-                            <iconify-icon class="send-icon" icon="@Model.WebsiteInfos?.LogoUrl"></iconify-icon>
-
+                            <iconify-icon class="send-icon" icon="tabler:location-filled"></iconify-icon>
                         </form>
                     </div>
                 </div>

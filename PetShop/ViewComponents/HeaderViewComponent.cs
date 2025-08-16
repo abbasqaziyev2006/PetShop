@@ -16,16 +16,15 @@ namespace PetShop.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var logo = await _dbContext.Logos.FirstOrDefaultAsync();
-            var contactInfo = await _dbContext.ContactInfos.FirstOrDefaultAsync();
-            var categories = await _dbContext.Categories.ToListAsync();
+            var socials = _dbContext.Socials.ToList();
+            var bios = _dbContext.Bios.FirstOrDefault();
+            var sliders = _dbContext.Sliders.ToList();
 
             var model = new HeaderViewModel
             {
-                LogoUrl = logo?.LogoPath,
-                Phone = contactInfo?.Phone ?? string.Empty,
-                Email = contactInfo?.Email ?? string.Empty,
-                Categories = categories
+                Socials = socials,
+                Bios = bios,
+                Sliders = sliders
             };
 
             return View(model);
