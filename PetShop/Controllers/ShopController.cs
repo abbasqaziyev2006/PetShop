@@ -18,7 +18,7 @@ namespace PetShop.Controllers
         }
         public IActionResult Index()
         {
-            var products = _dbContext.Products.Take(3).ToList();
+            var products = _dbContext.Products.Take(2).ToList();
             var categories = _dbContext.Categories.ToList();
             ViewBag.ProductCount = _dbContext.Products.Count();
 
@@ -34,7 +34,7 @@ namespace PetShop.Controllers
 
         public IActionResult Partial(int skip)
         {
-            var products = _dbContext.Products.Skip(skip).Take(3).ToList();
+            var products = _dbContext.Products.Skip(skip).Take(2).ToList();
             var categories = _dbContext.Categories.ToList();
 
             var productPartialViewModel = new ProductPartialViewModel

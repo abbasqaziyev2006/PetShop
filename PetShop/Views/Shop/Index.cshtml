@@ -291,11 +291,11 @@
 <script>
     const loadMore = document.getElementById('btnLoadMore');
     const productRows = document.getElementById('productRows');
-    let skip = 3;
+    let skip = 2;
     let productCount = document.getElementById('productCount');
 
     loadMore.addEventListener('click',function(){
-        fetch(`https://localhost:7073/shop/partial?skip=${skip}`)
+        fetch(`https://localhost:7118/shop/partial?skip=${skip}`)
         .then(response => response.text())
         .then(html=>{
             productRows.innerHTML += html;
