@@ -37,5 +37,6 @@ namespace PetShop.Controllers
 
             return View(homeViewModel);
         }
+
     }
 }

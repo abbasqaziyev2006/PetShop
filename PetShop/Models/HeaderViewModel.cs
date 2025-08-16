@@ -5,7 +5,8 @@ namespace PetShop.ViewComponents
     public class HeaderViewModel
     {
         public string? LogoUrl { get; set; }
-        public List<Social> Socials { get; set; } = [];
-        public WebsiteInfo? WebsiteInfos { get; set; }
+        public required string Phone { get; set; }
+        public required string Email { get; set; }
+        public List<Category> Categories { get; set; } = [];
     }
 }

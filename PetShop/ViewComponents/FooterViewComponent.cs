@@ -20,8 +20,7 @@ namespace PetShop.ViewComponents
             var model = new FooterViewModel
             {
                 Socials = socials,
-                WebsiteInfos = websiteInfos
-
+                WebsiteInfos = websiteInfos,
             };
             return View(model);
         }

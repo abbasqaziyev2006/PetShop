@@ -10,6 +10,8 @@ namespace PetShop.DataContext
         }
 
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Logo> Logos { get; set; }
+        public DbSet<ContactInfo> ContactInfos { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

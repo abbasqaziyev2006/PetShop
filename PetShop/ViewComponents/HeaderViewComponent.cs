@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PetShop.DataContext;
 using PetShop.DataContext.Entities;
 
@@ -12,18 +13,23 @@ namespace PetShop.ViewComponents
         {
             _dbContext = dbContext;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var socials = _dbContext.Socials.ToList();
-            var websiteInfos = _dbContext.WebsiteInfo.FirstOrDefault();
+            var logo = await _dbContext.Logos.FirstOrDefaultAsync();
+            var contactInfo = await _dbContext.ContactInfos.FirstOrDefaultAsync();
+            var categories = await _dbContext.Categories.ToListAsync();
+
             var model = new HeaderViewModel
             {
-                Socials = socials,
-                WebsiteInfos = websiteInfos,
-
+                LogoUrl = logo?.LogoPath,
+                Phone = contactInfo?.Phone ?? string.Empty,
+                Email = contactInfo?.Email ?? string.Empty,
+                Categories = categories
             };
-            return View(model);
 
+            return View(model);
         }
     }
 }
+
