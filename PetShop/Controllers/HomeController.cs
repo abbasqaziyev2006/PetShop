@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PetShop.DataContext;
 using PetShop.Models;
 
@@ -15,28 +14,30 @@ namespace PetShop.Controllers
             _dbContext = dbContext;
         }
 
+
         public IActionResult Index()
         {
-            var categories = _dbContext.Categories.ToList();
-            var productImages = _dbContext.ProductImages.ToList();
-            var productTags = _dbContext.ProductTags.ToList();
             var sliders = _dbContext.Sliders.ToList();
-            var products = _dbContext.Products.Include(p => p.Images).Include(p => p.Category).ToList();
-            var petClothingProducts = _dbContext.Products.Include(p => p.Category).Where(p => p.Category!.Name == "Pet Clothing").ToList();
-            var petFoodProducts = _dbContext.Products.Include(p => p.Category).Where(p => p.Category!.Name == "Food").ToList();
+            var categories = _dbContext.Categories.ToList();
+            var products = _dbContext.Products.ToList();
+            var productTags = _dbContext.ProductTags.ToList();
+            var productImages = _dbContext.ProductImages.ToList();
+            var tags = _dbContext.Tags.ToList();
 
             var homeViewModel = new HomeViewModel
             {
+                Sliders = sliders,
                 Categories = categories,
                 Products = products,
-                ProductImages = productImages,
                 ProductTags = productTags,
-                Sliders = sliders,
-                PetClothingProducts = petClothingProducts
+                ProductImages = productImages,
+                Tags = tags
             };
+
 
             return View(homeViewModel);
         }
+
 
     }
 }

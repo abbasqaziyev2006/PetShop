@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
+
 <!-- Mirrored from demo.templatesjungle.com/waggy/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 May 2025 10:23:50 GMT -->
 <head>
     <title>Waggy - Free eCommerce Pet Shop HTML Website Template</title>
@@ -7,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="ecommerce, pet, shop">
     <meta name="description" content="Free eCommerce Pet Shop HTML Website Template">
@@ -23,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chilanka&amp;family=Montserrat:wght@300;400;500&amp;display=swap"
           rel="stylesheet">
+
 </head>
 
 <body>
@@ -92,162 +95,37 @@
         </defs>
     </svg>
 
-    <div class="preloader-wrapper">
-        <div class="preloader">
-        </div>
-    </div>
-
-    @await Component.InvokeAsync("Cart")
-
     @await Component.InvokeAsync("Header")
 
-    @RenderBody()
-
-    <section id="register" style="background: url('images/background-img.png') no-repeat;">
-        <div class="container ">
-            <div class="row my-5 py-5">
-                <div class="offset-md-3 col-md-6 my-5 ">
-                    <h2 class="display-3 fw-normal text-center">
-                        Get 20% Off on <span class="text-primary">first Purchase</span>
-                    </h2>
-                    <form>
-                        <div class="mb-3">
-                            <input type="email" class="form-control form-control-lg" name="email" id="email"
-                                   placeholder="Enter Your Email Address">
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" class="form-control form-control-lg" name="email" id="password1"
-                                   placeholder="Create Password">
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" class="form-control form-control-lg" name="email" id="password2"
-                                   placeholder="Repeat Password">
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-dark btn-lg rounded-1">Register it now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="service">
-        <div class="container py-5 my-5">
-            <div class="row g-md-5 pt-4">
-                <div class="col-md-3 my-3">
-                    <div class="card">
-                        <div>
-                            <iconify-icon class="service-icon text-primary" icon="la:shopping-cart"></iconify-icon>
-                        </div>
-                        <h3 class="card-title py-2 m-0">Free Delivery</h3>
-                        <div class="card-text">
-                            <p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 my-3">
-                    <div class="card">
-                        <div>
-                            <iconify-icon class="service-icon text-primary" icon="la:user-check"></iconify-icon>
-                        </div>
-                        <h3 class="card-title py-2 m-0">100% secure payment</h3>
-                        <div class="card-text">
-                            <p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 my-3">
-                    <div class="card">
-                        <div>
-                            <iconify-icon class="service-icon text-primary" icon="la:tag"></iconify-icon>
-                        </div>
-                        <h3 class="card-title py-2 m-0">Daily Offer</h3>
-                        <div class="card-text">
-                            <p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 my-3">
-                    <div class="card">
-                        <div>
-                            <iconify-icon class="service-icon text-primary" icon="la:award"></iconify-icon>
-                        </div>
-                        <h3 class="card-title py-2 m-0">Quality guarantee</h3>
-                        <div class="card-text">
-                            <p class="blog-paragraph fs-6">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="insta" class="my-5">
-        <div class="row g-0 py-5">
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta1.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta2.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta3.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta4.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta5.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-            <div class="col instagram-item  text-center position-relative">
-                <div class="icon-overlay d-flex justify-content-center position-absolute">
-                    <iconify-icon class="text-white" icon="la:instagram"></iconify-icon>
-                </div>
-                <a href="#">
-                    <img src="~/images/insta6.jpg" alt="insta-img" class="img-fluid rounded-3">
-                </a>
-            </div>
-        </div>
-    </section>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
     @await Component.InvokeAsync("Footer")
 
-    <script src="~/js/jquery-1.11.0.min.js" asp-append-version="true"></script>
+    <div id="footer-bottom">
+        <div class="container">
+            <hr class="m-0">
+            <div class="row mt-3">
+                <div class="col-md-6 copyright">
+                    <p class="secondary-font">© 2023 Waggy. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="secondary-font">
+                        Free HTML Template by <a href="https://templatesjungle.com/" target="_blank"
+                                                 class="text-decoration-underline fw-bold text-black-50"> TemplatesJungle</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-1.11.0.min.js"></script>
     <script src="~/js/swiper-bundle.min.js"></script>
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/plugins.js"></script>
-    <script src="~/js/script.js"></script>
-    <script src="~/js/iconify-icon.min.js"></script>
-    <script src="~/js/basket.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-    <script src="~/js/wishlist.js" asp-append-version="true"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+    <script src="~/js/iconify-icon.min.js" asp-append-version="true"></script>
 </body>
 
 </html>

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.DataContext;
-using PetShop.DataContext.Entities;
-using PetShop.Models;
 
 namespace PetShop.ViewComponents
 {
@@ -13,16 +11,10 @@ namespace PetShop.ViewComponents
         {
             _dbContext = dbContext;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var socials = _dbContext.Socials.ToList();
-            var bios = _dbContext.Bios.FirstOrDefault();
-            var model = new FooterViewModel
-            {
-                Socials = socials,
-                Bios = bios,
-            };
-            return View(model);
+            return View();
         }
     }
 }

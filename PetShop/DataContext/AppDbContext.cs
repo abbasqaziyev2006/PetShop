@@ -9,7 +9,6 @@ namespace PetShop.DataContext
         {
         }
 
-        public DbSet<Bio> Bios { get; set; }
         public DbSet<Social> Socials { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -17,6 +16,7 @@ namespace PetShop.DataContext
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Logo> Logos { get; set; }
 
     }
 }

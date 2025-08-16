@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PetShop.DataContext;
-using PetShop.Models;
 
 namespace PetShop.Controllers
 {
     public class BasketController : Controller
     {
-        private const string BASKET_KEY = "basket";
-
+        public const string BASKET_Key = "basket";
         private readonly AppDbContext _dbContext;
 
         public BasketController(AppDbContext dbContext)
@@ -21,110 +19,51 @@ namespace PetShop.Controllers
             return View();
         }
 
-
-        public IActionResult AddToBasket(int id)
+        public IActionResult AddToBasket(int? id)
         {
-            var product = _dbContext.Products.Find(id);
+            if (id == null) return BadRequest();
 
-            if (product == null) return BadRequest();
+            if (_dbContext.Products.Find(id) == null) return BadRequest();
 
-            var basketItems = AddBasketItemToBasket(id);
+            var basket = GetBasket();
+            var existBasketItemIndex = basket.FindIndex(x => x.ProductId == id);
 
-            var basketItemsInJson = JsonConvert.SerializeObject(basketItems);
+            if (existBasketItemIndex == -1) basket.Add(new BasketItem { ProductId = id.Value });
+            else basket[existBasketItemIndex].Count++;
 
-            Response.Cookies.Append(BASKET_KEY, basketItemsInJson, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
+            var jsonBasket = JsonConvert.SerializeObject(basket);
 
-            var basketViewModel = GetBasketViewModelFromCookie(basketItems);
+            Response.Cookies.Append(BASKET_Key, jsonBasket);
 
-            return Json(basketViewModel);
-        }
-
-        public IActionResult InitBasket()
-        {
-            var basketItemsFromCookie = GetBasketItems();
-            var basketViewModel = GetBasketViewModelFromCookie(basketItemsFromCookie);
-
-            return Json(basketViewModel);
-        }
-
-        public IActionResult RemoveFromBasket(int id)
-        {
-            var basketItemsFromCookie = RemoveBasketItemFromBasket(id);
-
-            var basketItemsInJson = JsonConvert.SerializeObject(basketItemsFromCookie);
-
-            Response.Cookies.Append(BASKET_KEY, basketItemsInJson, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
-
-            var basketViewModel = GetBasketViewModelFromCookie(basketItemsFromCookie);
-
-            return Json(basketViewModel);
+            return RedirectToAction("Index", "Home");
 
         }
 
-        public List<BasketCookieItemModel> GetBasketItems()
+
+
+
+
+
+
+        public List<BasketItem> GetBasket()
         {
-            var basketItemsInString = Request.Cookies[BASKET_KEY];
-
-            var basketItems = new List<BasketCookieItemModel>();
-
-            if (!string.IsNullOrEmpty(basketItemsInString))
+            var basketCookie = Request.Cookies[BASKET_Key];
+            var basket = new List<BasketItem>();
+            if (!string.IsNullOrEmpty(basketCookie))
             {
-                basketItems = JsonConvert.DeserializeObject<List<BasketCookieItemModel>>(basketItemsInString);
+                basket = JsonConvert.DeserializeObject<List<BasketItem>>(basketCookie) ?? [];
             }
-
-            return basketItems!;
+            return basket;
         }
 
-        public List<BasketCookieItemModel> AddBasketItemToBasket(int id)
+        public class BasketItem
         {
-            var basketItems = GetBasketItems();
-
-            var existBasketItem = basketItems.Find(x => x.ProductId == id);
-
-            if (existBasketItem == null)
-                basketItems.Add(new BasketCookieItemModel { ProductId = id });
-            else
-                existBasketItem.Count++;
-
-            return basketItems!;
+            public int ProductId { get; set; }
+            public int Count { get; set; } = 1;
         }
 
-        public List<BasketCookieItemModel> RemoveBasketItemFromBasket(int id)
-        {
-            var basketItemsFromCookie = GetBasketItems();
 
-            var itemIndex = basketItemsFromCookie.FindIndex(x => x.ProductId == id);
 
-            if (itemIndex != -1)
-                basketItemsFromCookie.RemoveAt(itemIndex);
-
-            return basketItemsFromCookie;
-        }
-
-        public BasketViewModel GetBasketViewModelFromCookie(List<BasketCookieItemModel> basketCookieItemModels)
-        {
-            var basketViewModel = new BasketViewModel();
-            var basketItemViewModels = new List<BasketItemViewModel>();
-            foreach (var item in basketCookieItemModels)
-            {
-                var product = _dbContext.Products.Find(item.ProductId);
-
-                if (product == null) continue;
-
-                basketItemViewModels.Add(new BasketItemViewModel
-                {
-                    Id = product.Id,
-                    Price = product.Price,
-                    Name = product.Name,
-                    Count = item.Count,
-                });
-            }
-
-            basketViewModel.Items = basketItemViewModels;
-            basketViewModel.Count = basketItemViewModels.Sum(x => x.Count);
-            basketViewModel.Total = basketItemViewModels.Sum(x => x.Count * x.Price);
-
-            return basketViewModel;
-        }
     }
+
 }

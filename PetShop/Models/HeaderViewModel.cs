@@ -1,11 +1,11 @@
 ﻿using PetShop.DataContext.Entities;
+using PetShop.Models;
 
 namespace PetShop.ViewComponents
 {
     public class HeaderViewModel
     {
-        public Bio? Bios { get; set; }
-        public List<Slider> Sliders { get; set; } = [];
-        public List<Social> Socials { get; set; } = [];
+        public string? ImageUrl { get; set; }
+        public List<BasketItemViewModel> BasketItems { get; set; } = [];
     }
 }
